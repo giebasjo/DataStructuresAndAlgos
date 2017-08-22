@@ -8,6 +8,7 @@ using std::rand;
 using std::copy;
 
 #include <time.h>
+#include <string>
 
 #include "./QuickSort/QuickSortImplementation.cpp"
 #include "./HeapSort/HeapSortImplementation.cpp"
@@ -23,7 +24,6 @@ void copyArray( int inputArray[], int receiverArray[], int sz ) {
     }
 
 }
-
 
 int main() {
 
@@ -68,6 +68,8 @@ int main() {
      *  2. into a temparray we can reuse them
      */
 
+    cout << "\n QUICK SORT ANALYSIS \n";
+
     // 10 element
     int temparr_1[10];
     copyArray(arr_1, temparr_1, 10);
@@ -75,7 +77,7 @@ int main() {
     t = clock();
     quickSort( arr_1, 0, 9 );
     t = clock() - t;
-    cout << "It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    cout << "10 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_1, arr_1, 10 );
 
     // 100 element
@@ -83,7 +85,7 @@ int main() {
     copyArray(arr_2, temparr_2, 100);
     quickSort( arr_2, 0, 99 );
     t = clock() - t;
-    cout << "It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    cout << "100 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_2, arr_2, 100 );
 
     // 1000 element
@@ -92,7 +94,7 @@ int main() {
     t = clock();
     quickSort( arr_3, 0, 999 );
     t = clock() - t;
-    cout << "It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    cout << "1000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_3, arr_3, 1000 );
 
     // 10000 element
@@ -101,7 +103,7 @@ int main() {
     t = clock();
     quickSort( arr_4, 0, 9999 );
     t = clock() - t;
-    cout << "It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    cout << "10000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_4, arr_4, 10000 );
 
     // 100000 element
@@ -110,12 +112,51 @@ int main() {
     t = clock();
     quickSort( arr_5, 0, 99999 );
     t = clock() - t;
-    cout << "It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    cout << "100000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    copyArray( temparr_5, arr_5, 100000 );
+
+    cout << "\n HEAPSORT ANALYSIS \n";
+
+    // 10 element
+    copyArray(arr_1, temparr_1, 10);
+    t = clock();
+    heapSort( arr_1, 10 );
+    t = clock() - t;
+    cout << "10 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    copyArray( temparr_1, arr_1, 10 );
+
+    // 100 element
+    copyArray(arr_2, temparr_2, 100);
+    heapSort( arr_2, 100 );
+    t = clock() - t;
+    cout << "100 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    copyArray( temparr_2, arr_2, 100 );
+
+    // 1000 element
+    copyArray(arr_3, temparr_3, 1000);
+    t = clock();
+    heapSort( arr_3, 1000 );
+    t = clock() - t;
+    cout << "1000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    copyArray( temparr_3, arr_3, 1000 );
+
+    // 10000 element
+    copyArray(arr_4, temparr_4, 10000);
+    t = clock();
+    heapSort( arr_4, 10000 );
+    t = clock() - t;
+    cout << "10000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
+    copyArray( temparr_4, arr_4, 10000 );
+
+    // 100000 element
+    copyArray(arr_5, temparr_5, 100000);
+    t = clock();
+    heapSort( arr_5, 100000 );
+    t = clock() - t;
+    cout << "100000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_5, arr_5, 100000 );
 
 }
-
-
 
 
 
