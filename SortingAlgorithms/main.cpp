@@ -7,6 +7,12 @@ using std::rand;
 #include <algorithm>
 using std::copy;
 
+#include <vector>
+using std::vector;
+
+#include <fstream>
+using std::ofstream;
+
 #include <time.h>
 #include <string>
 
@@ -14,6 +20,22 @@ using std::copy;
 #include "./HeapSort/HeapSortImplementation.cpp"
 #include "./MergeSort/MergeSortImplementation.cpp"
 //#include "./BubbleSort/fdsjalk;fjdalsk;fadjs"
+
+void write_vectorElms_to_file( ofstream &f, vector< vector<double> > vec ) {
+
+    for ( int i = 0; i < vec.size(); i++  ) {
+
+        for ( int j = 0; j < vec[i].size(); j++  ) {
+
+            f << vec[i].at(j) << " ";
+
+        }
+
+        f << "\n";
+
+    }
+
+}
 
 void copyArray( int inputArray[], int receiverArray[], int sz ) {
 
@@ -27,6 +49,9 @@ void copyArray( int inputArray[], int receiverArray[], int sz ) {
 
 int main() {
 
+    ofstream outFile;
+    outFile.open( "sorting_algo_times.txt" );
+
     /* 
      * Initialize the arrays of various
      * sizes to be filled with random nums
@@ -37,6 +62,10 @@ int main() {
     int arr_4[10000];
     int arr_5[100000];
 
+    vector<double> quicksort_times;
+    vector<double> heapsort_times;
+    vector<double> mergesort_times;
+    vector< vector<double> > algo_times;
     /*
      * Generate the random numbers
      * and fill the initalized arrays
@@ -79,6 +108,8 @@ int main() {
     t = clock() - t;
     cout << "10 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_1, arr_1, 10 );
+    double t_sec = ((double)t)/CLOCKS_PER_SEC;
+    quicksort_times.push_back(t_sec);
 
     // 100 element
     int temparr_2[100];
@@ -87,6 +118,8 @@ int main() {
     t = clock() - t;
     cout << "100 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_2, arr_2, 100 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    quicksort_times.push_back(t_sec);
 
     // 1000 element
     int temparr_3[1000];
@@ -96,6 +129,8 @@ int main() {
     t = clock() - t;
     cout << "1000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_3, arr_3, 1000 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    quicksort_times.push_back(t_sec);
 
     // 10000 element
     int temparr_4[10000];
@@ -105,6 +140,8 @@ int main() {
     t = clock() - t;
     cout << "10000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_4, arr_4, 10000 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    quicksort_times.push_back(t_sec);
 
     // 100000 element
     int temparr_5[100000];
@@ -114,6 +151,8 @@ int main() {
     t = clock() - t;
     cout << "100000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_5, arr_5, 100000 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    quicksort_times.push_back(t_sec);
 
     cout << "\n HEAPSORT ANALYSIS \n";
 
@@ -122,9 +161,10 @@ int main() {
     t = clock();
     heapSort( arr_1, 10 );
     t = clock() - t;
-
     cout << "10 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_1, arr_1, 10 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    heapsort_times.push_back(t_sec);
 
     // 100 element
     copyArray(arr_2, temparr_2, 100);
@@ -132,6 +172,8 @@ int main() {
     t = clock() - t;
     cout << "100 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_2, arr_2, 100 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    heapsort_times.push_back(t_sec);
 
     // 1000 element
     copyArray(arr_3, temparr_3, 1000);
@@ -140,6 +182,8 @@ int main() {
     t = clock() - t;
     cout << "1000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_3, arr_3, 1000 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    heapsort_times.push_back(t_sec);
 
     // 10000 element
     copyArray(arr_4, temparr_4, 10000);
@@ -148,6 +192,8 @@ int main() {
     t = clock() - t;
     cout << "10000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_4, arr_4, 10000 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    heapsort_times.push_back(t_sec);
 
     // 100000 element
     copyArray(arr_5, temparr_5, 100000);
@@ -156,6 +202,8 @@ int main() {
     t = clock() - t;
     cout << "100000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_5, arr_5, 100000 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    heapsort_times.push_back(t_sec);
 
     cout << "\n MERGESORT ANALYSIS \n";
 
@@ -166,6 +214,8 @@ int main() {
     t = clock() - t;
     cout << "10 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_1, arr_1, 10 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    mergesort_times.push_back(t_sec);
 
     // 100 element
     copyArray(arr_2, temparr_2, 100);
@@ -173,6 +223,8 @@ int main() {
     t = clock() - t;
     cout << "100 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_2, arr_2, 100 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    mergesort_times.push_back(t_sec);
 
     // 1000 element
     copyArray(arr_3, temparr_3, 1000);
@@ -181,6 +233,8 @@ int main() {
     t = clock() - t;
     cout << "1000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_3, arr_3, 1000 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    mergesort_times.push_back(t_sec);
 
     // 10000 element
     copyArray(arr_4, temparr_4, 10000);
@@ -189,6 +243,8 @@ int main() {
     t = clock() - t;
     cout << "10000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_4, arr_4, 10000 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    mergesort_times.push_back(t_sec);
 
     // 100000 element
     copyArray(arr_5, temparr_5, 100000);
@@ -197,12 +253,27 @@ int main() {
     t = clock() - t;
     cout << "100000 elements: It took " << ((double)t)/CLOCKS_PER_SEC << " seconds\n";
     copyArray( temparr_5, arr_5, 100000 );
+    t_sec = ((double)t)/CLOCKS_PER_SEC;
+    mergesort_times.push_back(t_sec);
+
+    algo_times.push_back(quicksort_times);
+    algo_times.push_back(heapsort_times);
+    algo_times.push_back(mergesort_times);
+
+    write_vectorElms_to_file( outFile, algo_times );
+
+
+/*
+    cout << "\nPRINTING VECTORS\n";
+    printVec(quicksort_times);
+    cout << "\n";
+    printVec(heapsort_times);
+    cout << "\n";
+    printVec(mergesort_times);
+    cout << "\n";
+*/
 
 }
-
-
-
-
 
 
 
