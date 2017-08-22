@@ -1,0 +1,5 @@
+#!/bin/bash
+g++ -std=c++14 main.cpp -o program_exec
+./program_exec
+python data_visualization_script.py
+
