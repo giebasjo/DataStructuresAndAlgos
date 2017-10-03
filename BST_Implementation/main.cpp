@@ -12,7 +12,7 @@ int main() {
     bst->add(-1);
     bst->add(-10);
     bst->add(100);
-    bst->print();
+    cout << bst->nodesCount() << endl;
 
 
     return 0;

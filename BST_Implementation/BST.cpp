@@ -12,7 +12,7 @@ using std::max;
 #include "BST.h"
 
 template<class T>
-void BST::addHelper(Node<T> *root, T val) {
+void BST<T>::addHelper(Node<T> *root, T val) {
 
     if ( root->data > val ) {
 
@@ -48,7 +48,7 @@ void BST::addHelper(Node<T> *root, T val) {
 
 
 template<class T>
-void BST::printHelper(Node<T> *root) {
+void BST<T>::printHelper(Node<T> *root) {
 
     if ( !root ) return;
     printHelper( root->left );
@@ -58,7 +58,7 @@ void BST::printHelper(Node<T> *root) {
 }
 
 template<class T>
-int BST::nodesCountHelper( Node<T> *root ) {
+int BST<T>::nodesCountHelper( Node<T> *root ) {
 
     if ( !root ) return 0;
     else return 1 + nodesCountHelper( root->left ) + nodesCountHelper( root->right );
@@ -66,7 +66,7 @@ int BST::nodesCountHelper( Node<T> *root ) {
 }
 
 template<class T>
-int BST::heightHelper( Node<T> *root ) {
+int BST<T>::heightHelper( Node<T> *root ) {
 
     if ( !root ) return 0;
     else return 1 + max(heightHelper( root->left ), heightHelper( root->right ));
@@ -75,7 +75,7 @@ int BST::heightHelper( Node<T> *root ) {
 
 
 template<class T>
-void BST::printMaxPathHelper( Node<T> *root ) {
+void BST<T>::printMaxPathHelper( Node<T> *root ) {
 
     if ( !root ) return;
     cout << root->data << ' ';
@@ -95,7 +95,7 @@ void BST::printMaxPathHelper( Node<T> *root ) {
 
 
 template<class T>
-bool BST::deleteValueHelper( Node<T> *parent, Node<T> *current, T value ) {
+bool BST<T>::deleteValueHelper( Node<T> *parent, Node<T> *current, T value ) {
 
     if ( !current ) return false;
     if ( current->data == value ) {
@@ -151,7 +151,7 @@ bool BST::deleteValueHelper( Node<T> *parent, Node<T> *current, T value ) {
 }
 
 template<class T>
-void BST::add( T val ) {
+void BST<T>::add( T val ) {
 
     if ( root ) {
 
@@ -166,32 +166,36 @@ void BST::add( T val ) {
 
 }
 
-void BST::print() {
+template<class T>
+void BST<T>::print() {
 
     printHelper( this->root );
 
 }
 
-int BST::nodesCount() {
+template<class T>
+int BST<T>::nodesCount() {
 
     return nodesCountHelper( this->root );
 
 }
 
-int BST::height() {
+template<class T>
+int BST<T>::height() {
 
     return heightHelper( this->root );
 
 }
 
-void BST::printMaxPath() {
+template<class T>
+void BST<T>::printMaxPath() {
 
     printMaxPathHelper( this->root );
 
 }
 
 template<class T>
-bool BST::deleteValue( T val ) {
+bool BST<T>::deleteValue( T val ) {
 
     return this->deleteValueHelper( nullptr, this->root, val );
 

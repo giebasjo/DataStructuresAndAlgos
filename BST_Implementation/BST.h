@@ -61,4 +61,4 @@ class BST {
 };
 
 
-#endif BST_H
+#endif //BST_H
