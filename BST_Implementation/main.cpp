@@ -1,10 +1,9 @@
 #include <iostream>
 using namespace std;
 
-#include "BST.h"
+#include "BST.cpp"
 
 int main() {
-
 
     BST<int> *bst = new BST<int>();
     bst->add(11);

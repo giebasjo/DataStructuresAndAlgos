@@ -6,8 +6,8 @@
 using std::cout;
 using std::endl;
 
-#ifndef BST_IMPLEMENTATION_BST_H
-#define BST_IMPLEMENTATION_BST_H
+#ifndef BST_H
+#define BST_H
 
 template<class T>
 struct Node {
@@ -61,15 +61,4 @@ class BST {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-#endif //BST_IMPLEMENTATION_BST_H
+#endif BST_H

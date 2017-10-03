@@ -4,6 +4,7 @@
 CMakeFiles/BST_Implementation.dir/BST.cpp.o: ../BST.cpp
 CMakeFiles/BST_Implementation.dir/BST.cpp.o: ../BST.h
 
+CMakeFiles/BST_Implementation.dir/main.cpp.o: ../BST.cpp
 CMakeFiles/BST_Implementation.dir/main.cpp.o: ../BST.h
 CMakeFiles/BST_Implementation.dir/main.cpp.o: ../main.cpp
 
