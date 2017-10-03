@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/jordangiebas/MSCF/InterviewPrep/DataStructuresAndAlgos/BST_Implementation/BST.cpp
+iostream
+-
+math.h
+-
+BST.h
+/Users/jordangiebas/MSCF/InterviewPrep/DataStructuresAndAlgos/BST_Implementation/BST.h
+
+/Users/jordangiebas/MSCF/InterviewPrep/DataStructuresAndAlgos/BST_Implementation/BST.h
+iostream
+-
+
+/Users/jordangiebas/MSCF/InterviewPrep/DataStructuresAndAlgos/BST_Implementation/main.cpp
+iostream
+-
+BST.h
+/Users/jordangiebas/MSCF/InterviewPrep/DataStructuresAndAlgos/BST_Implementation/BST.h
+
